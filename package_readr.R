@@ -79,3 +79,27 @@ imdb_txt <- read_delim("imdb.txt", delim = "\t")
 
 ## Repare que a sintaxe é igual a da função read_csv(). Em geral, as funções 
 ## de importação do {tidyverse} terão sintaxe e comportamento muito parecidos.
+
+# Locale() ---------------------------------------------------------------------------------------------------------------------------------
+
+## Muitas funções de importação e formatação possuem um argumento locale. Esse argumento 
+## é utilizado para definir opções de formatação próprias de uma certa localidade, como 
+## idioma, formato de data e hora, fuso horário, separador de decimal e milhar ou encoding.
+
+## O pacote {readr} possui uma função chamada locale(), que pode ser utilizada para 
+## definir todos esses atributos. Para saber quais são os padrões atualmente definidos 
+## na sua sessão, basta rodar:
+
+locale()
+
+## Em geral, teremos padrões norte-americanos. Se quisermos que os nomes de dias e meses
+## fiquem em português, podemos fazer:
+
+locale(date_names = "pt")
+
+## Ou trocar o separador de decimal de ponto para vírgula, caso a base a ser importada 
+## esteja nesse formato.
+
+locale(decimal_mark = ",")
+
+## A função locale() deve ser utilizada dentro das funções read_(), no argumento locale. 

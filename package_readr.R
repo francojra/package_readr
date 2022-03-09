@@ -103,3 +103,28 @@ locale(date_names = "pt")
 locale(decimal_mark = ",")
 
 ## A função locale() deve ser utilizada dentro das funções read_(), no argumento locale. 
+## Uma utilização muito comum é a definição do encoding do arquivo. O encoding se refere 
+## a como o computador traduz os caracteres que vemos na tela para os valores binários 
+## que ele utiliza internamente. Existem vários tipos de encoding e isso é um problema 
+## principalmente porque o Windows utiliza um encoding diferente do Linux/Mac. 
+## Você saberá que tem um problema de encoding quando letras com acento ou outros 
+## caracteres especiais ficarem desconfigurados após importar uma base para o R.
+
+frase_com_acentos <- "Você comerá uma maçã amanhã à tarde"
+Encoding(frase_com_acentos) # latin1 é um dos padrões que funcionam no Windows.
+
+Encoding(frase_com_acentos) <-  "UTF-8" # Forçando um novo encoding.
+frase_com_acentos
+
+Encoding(frase_com_acentos) <-  "latin1" # Retornando ao ecoding do windows.
+frase_com_acentos
+
+## Quando estivermos enfrentando esse problema, devemos dizer à função read_() qual 
+## o encoding deve ser utilizado no arquivo.
+
+read_csv("base_que_veio_do_windows.csv", locale = locale(encoding = "latin1"))
+
+## O latin1 é apenas um dos encodings que podem funcionar em arquivos do Windows. 
+## Outras sugestões são: windows-1250, windows-1252, ISO-8859-2 e ISO-8859-1. 
+## Se você estiver lendo um arquivo criado no Linux/Mac no Windows, basta usar 
+## o encoding UTF-8.

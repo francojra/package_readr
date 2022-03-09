@@ -17,7 +17,8 @@ library(readr)
 
 ## - read_tsv(): para arquivos separados por tabulação.
 
-## - read_delim(): para arquivos separados por um delimitador genérico. O argumento delim= indica qual caracter separa cada coluna no arquivo de texto.
+## - read_delim(): para arquivos separados por um delimitador genérico. O argumento delim= indica qual 
+## caracter separa cada coluna no arquivo de texto.
 
 ## - read_table(): para arquivos de texto tabular com colunas separadas por espaço.
 

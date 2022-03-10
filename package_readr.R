@@ -166,4 +166,13 @@ parse_number(c("5", "5.0", "5,0", "R$5.00", "5 a"), na = "5 a")
 
 # Escrevendo arquivos de texto -------------------------------------------------------------------------------------------------------------
 
+## Para a maioria das funções read_, existe uma respectiva função write_. Essas 
+## funções servem para salvar bases em um formato específico de arquivo. Além do 
+## caminho/nome do arquivo a ser criado, você também precisa passar o objeto que 
+## será escrito. Para o arquivo criado funcionar corretamente, você precisa especificar 
+## a extensão correta no nome do arquivo.
 
+mtcars # Primeiro indica o nome dos dados
+write_csv(x = mtcars, path = "mtcars.csv") # Arquivo .csv
+
+write_delim(x = mtcars, path = "mtcars.txt", delim = "\t") # Base separada por tabulação

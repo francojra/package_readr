@@ -151,3 +151,19 @@ parse_date("01/Junho/2010", format = "%d/%B/%Y", locale = locale(date_names = "p
 ## Você também pode especificar NAs utilizando o argumento na.
 
 parse_number(c("5", "5.0", "5,0", "R$5.00", "5 a"), na = "5 a")
+
+## Outras funções de parseamento úteis são:
+
+## - readr::parse_integer(), para parsear números inteiros.
+## - readr::parse_character(), para parsear strings
+## - readr::parse_date(), readr::parse_time(), readr::parse_datetime()
+## para parsear datas, horas e data/horas.
+
+## Todas essas funções são utilizadas nas colunas de uma base quando utilizamos as 
+## funções de importação do {readr}. Assim, se algum valor foi modificado incorretamente 
+## durante a importação, você pode testar importar tudo como texto (character) e usar 
+## essas funções para reproduzir a transformação que o {readr} fez.
+
+# Escrevendo arquivos de texto -------------------------------------------------------------------------------------------------------------
+
+

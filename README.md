@@ -10,4 +10,6 @@
 1. O pacote readr;
 2. Lendo arquivos de texto;
 3. Locale();
-4. 
+4. Parseando valores;
+5. Escrevendo arquivos de texto;
+6. Arquivos .rds.

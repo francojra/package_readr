@@ -128,3 +128,26 @@ read_csv("base_que_veio_do_windows.csv", locale = locale(encoding = "latin1"))
 ## Outras sugestões são: windows-1250, windows-1252, ISO-8859-2 e ISO-8859-1. 
 ## Se você estiver lendo um arquivo criado no Linux/Mac no Windows, basta usar 
 ## o encoding UTF-8.
+
+# Parseando valores ------------------------------------------------------------------------------------------------------------------------
+
+## O pacote {readr} possui algumas funções muito úteis para parsear valores. 
+## Parsear é um termo muito utilizado em programação e tem o sentido de arrumar 
+## ou formatar. Se estamos parseando um número, por exemplo, estamos pegando um 
+## texto que é muito parecido com um número e o transforando em um número de fato.
+
+parse_number(c("5", "5.0", "5,0", "R$5.00", "5 a"))
+
+## Veja que podemos usar o argumento locale para especificar coordenadas para o parseamento
+
+parse_number("5,0", locale = locale(decimal_mark = ","))
+
+## ou o idioma usado em datas
+
+parse_date("01/June/2010", format = "%d/%B/%Y") # Inglês
+
+parse_date("01/Junho/2010", format = "%d/%B/%Y", locale = locale(date_names = "pt")) # Português
+
+## Você também pode especificar NAs utilizando o argumento na.
+
+parse_number(c("5", "5.0", "5,0", "R$5.00", "5 a"), na = "5 a")

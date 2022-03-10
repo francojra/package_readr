@@ -176,3 +176,29 @@ mtcars # Primeiro indica o nome dos dados
 write_csv(x = mtcars, path = "mtcars.csv") # Arquivo .csv
 
 write_delim(x = mtcars, path = "mtcars.txt", delim = "\t") # Base separada por tabulação
+
+# Arquivos .rds ---------------------------------------------------------------------------------------------------------------------------
+
+## A linguagem R tem uma extensão própria de arquivos binários chamada RDS ou .rds. 
+## Essa extensão pode ser utilizada para guarda qualquer tipo de objeto do R, inclusive 
+## bases de dados. Temos duas principais vantagens ao utilizarmos essa extensão para
+## salvarvamos as nossas bases:
+
+## - ele salva as classes especificadas para as colunas;
+
+## - ele pode ser compactado, gerando arquivos muito menores.
+
+## A desvantagem é que ele só poderá ser lido dentro do R.
+## Para criar um arquivo .rds, utilize a função write_rds().
+
+write_rds(mtcars, path = "mtcars.rds", compress = "gz")
+
+## O argumento compress é opcional e indica qual o tipo de compactação deve 
+## ser feito. O padrão é não compactar.
+
+## Para ler um arquivo .rds de volta para o R, utilizamos a função read_rds(). 
+## Repare que essa função não possui outros argumentos, pois o objeto importado
+## será exatamente igual ao objeto que foi gravado no arquivo.
+
+imdb_rds <- read_rds(file = "imdb.rds")
+View(imdb_rds) # Visualizar planilha
